@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  nodeService:
+    image: node:20-alpine
+    container_name: node
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=development
+      - DB_URI=mongodb://mongo:27017/ecomerce
+    volumes:
+      - ./:/home/node/app
+    ports:
+      - 3000:3000
+    command: >
+      sh -c "
+      npm install &&
+      npm run start:dev
+      "
+    depends_on:
+      - db
+    networks:
+      - ecomerce
+  
+  db:
+    image: mongo:3
+    container_name: mongo
+    environment:    
+      - MONGO_INITDB_DATABASE=ecomerce
+      - MONGO_INITDB_ROOT_USERNAME=root  
+      - MONGO_INITDB_ROOT_PASSWORD=root
+      
+    volumes:
+      - ./data:/data/db
+      - ./mongo-init:/docker-entrypoint-initdb.d
+    ports:
+      - "27017:27017"
+    networks:
+      - ecomerce
+
+networks:
+  ecomerce:
+    driver: bridge
