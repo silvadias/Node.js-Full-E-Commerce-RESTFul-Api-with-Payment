@@ -13,7 +13,7 @@ Node.js-Full-E-Commerce-RESTFul-API-with- Cash and Online Payment
   ![dotenv](https://img.shields.io/badge/dotenv-3982CE?style=for-the-badge&logo=dotenv&logoColor=white1)
   ![swagger](https://img.shields.io/badge/swagger-00FF00?style=for-the-badge&logo=swagger&logoColor=white)
   ![eslint](https://img.shields.io/badge/eslint-8A118C?style=for-the-badge&logo=eslint&logoColor=white)
-  ![prettier](https://img.shields.io/badge/prettier-8A118C?style=for-the-badge&logo=prettier&logoColor=white)
+  ![prettier](https://img.shields.io/badge/prettier-8A118C?style=for-the-badge&logo=prettier&logoColor=white) ![docker-compose](https://img.shields.io/badge/docker-compose-%232496ED.svg?style=for-the-badge&logo=docker&logoColor=white)
   
   <br>
   <center>
@@ -51,46 +51,104 @@ Node.js-Full-E-Commerce-RESTFul-API-with- Cash and Online Payment
 
 ## Installation
 
+
+
+## Docker Support - "Simplify Your Development with Docker and Docker Compose!"
+
+E-shtery-app comes with Docker Compose configuration, so you can run the project easily in a containerized environment. No need to worry about setting up dependencies, as Docker Compose takes care of that for you.
+
+### Prerequisites
+
+Before you begin, make sure you have **Docker** and **Docker Compose** installed on your machine.
+
+1. **Install Docker on Linux (Ubuntu):**
+   
+   Run the following commands in your terminal:
+
+   ```bash
+   sudo apt-get update
+   sudo apt-get install -y docker.io
+   ```
+
+2. **Install Docker Compose:**
+
+   Run the following commands to install Docker Compose:
+
+   ```bash
+   sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+   sudo chmod +x /usr/local/bin/docker-compose
+   ```
+
+### Running the Project with Docker Compose
+
 1. **Clone the Repository:**
-   Use the `git clone` command to clone the GitHub repository to your local machine.
+   Clone the GitHub repository to your local machine:
+
    ```bash
-   git clone https://github.com/alin00r/Node.js-Full-E-Commerce-RESTFul-App-with-Payment
+   git clone https://github.com/alin00r/Node.js-Full-E-Commerce-RESTFul-Api-with-Payment.git        
    ```
-2. **Initialize a Package.json File (if not already done):**
-   If your project doesn't already have a `package.json` file, you can create one by running:
+
+2. **Navigate to the Project Directory:**
+   Change to the project directory:
+
    ```bash
-   npm init
-   # or
-   yarn init
+   cd Node.js-Full-E-Commerce-RESTFul-App-with-Payment
    ```
-3. **Install depends**
-   ```bash
-      npm install
-   ```
-4. **Setting up env variables**<br>
 
-   - **Please first specifiy your database engine**
+3. **Run the Docker Compose Command:**
+   
+   The project already includes the `docker-compose.yml` file. To start the application and all its services (including the MongoDB container), simply run:
 
-   ```properties
-   ## PORT
-   PORT=YOUR PORT HERE
+ ## Docker Compose Workflow
 
-   ## MongoDB URI
-   DB_URI= YOUR DATABASE URI
+To start the services in detached mode, where the containers are running in the background, use the following command:
 
-   ## JWT access token
-   JWT_SECRET_KEY=YOUR JWT ACCESS TOKEN SECRET
-   JWT_EXPIRE_TIME=YOUR JWT EXPIRE TIME
+```bash  
+docker-compose up -d  
+```   
+This will build the images and start the containers.  
 
-   ## GMAIL
-   MAILER_APP_EMAIL=SENDER EMAIL
-   MAILER_APP_PASSWORD=SENDER PASSWORD
+## Bash with Logs
+If you want to view the logs of the running services, you can execute the following command:
 
-   ## STRIPE
-   STRIPE_SECRET=Your STRIPE SECRET KEY
-   STRIPE_WEBHOOK_SECRET=Your STRIPE WEBHOOK SECRET KEY
+```bash  
+docker-compose up  
+```  
+This command will start the services and continuously display the logs in the terminal. To run commands inside the containers while monitoring logs, open another bash session for your commands. 
 
-   ```
+## Accessing Containers via Docker Exec  
+
+To execute commands inside the Node container, use the following command:
+
+```bash  
+docker exec -it node sh  
+```  
+This will open a bash shell inside the node container.
+
+For accessing the MongoDB container, use:  
+
+```bash  
+docker exec -it mongo sh
+```  
+This command will open a bash shell inside the mongo container, allowing you to interact with the database directly.
+
+
+
+4. **Access the Project:**
+
+   After running the command above, the project will be available at `http://localhost:3000`. You can also check your MongoDB container on `localhost:27017` if needed.
+
+5. **Stop the Docker Containers:**
+
+   To stop the running containers, use:
+
+```bash  
+docker-compose down
+```  
+This setup will allow you to run the project seamlessly using Docker and Docker Compose, simplifying your development workflow. Happy coding!  
+![docker-compose](https://img.shields.io/badge/docker-compose-%232496ED.svg?style=for-the-badge&logo=docker&logoColor=white)
+
+
 
 ## Routes
 
